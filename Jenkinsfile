@@ -4,9 +4,10 @@ node ('ubuntu'){
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
     }  
+    /*
     stage('SAST'){
         build 'SECURITY-SAST-SNYK'
-    }
+    }*/
 
     
     stage('Build-and-Tag') {
@@ -20,9 +21,10 @@ node ('ubuntu'){
             app.push("latest")
         			}
          }
+    /*
     stage('SECURITY-IMAGE-SCANNER'){
         build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
-    }
+    }*/
   
     
     stage('Pull-image-server') {
@@ -30,10 +32,10 @@ node ('ubuntu'){
          sh "docker-compose down"
          sh "docker-compose up -d"	
       }
-    
+    /*
     stage('DAST')
         {
         build 'SECURITY-DAST-OWASP_ZAP'
         }
- 
+ */
 }
